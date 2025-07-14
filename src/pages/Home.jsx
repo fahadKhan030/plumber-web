@@ -1,8 +1,18 @@
 import React from "react";
 import HeroImg from "../assets/HeroImg.jpg";
 import Button from "../component/Button";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
+  const RattingImg = [
+    {
+      img: "2",
+    },
+    {
+      img: "3",
+    },
+  ];
+
   return (
     <div className="flex items-center justify-center overflow-hidden mt-16 text-white text-center">
       {/* hero section */}
@@ -17,14 +27,28 @@ const Home = () => {
               delivering top-notch plumbing solutions tailored to meet your
               needs.
             </p>
-            <div className="flex  gap-4">
-              <Button
-                className="px-5 font-semibold py-3.5"
-                children="Explore our service"
-              />
-              <div>
-                <span>stars</span>
-                <p className="font-semibold">From 2000+ ratings</p>
+            <div className="flex flex-col md:flex-row gap-10">
+              <NavLink to="/services">
+                <Button
+                  className="px-5 font-semibold py-3.5"
+                  children="Explore our service"
+                />
+              </NavLink>
+
+              <div className="flex flex-col md:flex-row  items-center justify-between gap-3">
+                <div className="flex md:hidden lg:flex">
+                  {RattingImg.map((img) => (
+                    <img
+                      src={img}
+                      alt=""
+                      className="h-14 w-14 rounded-full ml-[-10px] border-2 border-white "
+                    />
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span>stars</span>
+                  <p className="font-semibold">From 2000+ ratings</p>
+                </div>
               </div>
             </div>
           </div>
