@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/Logo.avif";
 import Button from "../component/Button.jsx";
 import telephone from "../assets/tele-Icon.png";
@@ -8,13 +8,33 @@ import closeIcon from "../assets/closeIcon.png";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 80) {
+      setScrollPosition(true);
+    } else {
+      setScrollPosition(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 w-screen bg-[#1a5cbf] text-white py-4 px-3 z-50">
+    <nav
+      className={`fixed top-0 w-screen py-4 px-3 z-50 transition-colors duration-300 ${
+        scrollPosition
+          ? " bg-transparent text-black"
+          : "bg-[#1a5cbf] text-white"
+      }`}
+    >
       <div className="flex items-center justify-center">
         <div className="flex items-center justify-between w-full max-w-[1200px]">
           {/* Logo */}
