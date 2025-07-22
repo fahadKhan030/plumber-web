@@ -157,7 +157,7 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-10 md:mt-16 text-white text-center">
       {/* Hero Section */}
-      <div className="w-full absolute top-0 bg-[#1a5cbf] py-30 px-4">
+      <div className="w-full absolute top-0 gradient-bg py-30 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto gap-3">
           <div className="md:text-start flex flex-col items-center md:items-start gap-4 md:gap-7 flex-1">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-[600px]">
