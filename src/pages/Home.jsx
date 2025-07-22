@@ -21,7 +21,7 @@ import wasterwater from "../assets/waste-water.png";
 import driver from "../assets/driver.png";
 import right from "../assets/arrowright.png";
 
-import "../App.css"; // Assuming you have a global CSS file for styles
+import "../App.css";
 
 const RatingAvatars = () => {
   const images = [RattingImg1, RattingImg3, RattingImg2];
@@ -351,9 +351,14 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       {/* <Testimonials /> */}
-      <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20"></div>
+      <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20">
+        <div></div>
+      </div>
+
       {/* <Blog /> */}
+      <div></div>
     </div>
   );
 };

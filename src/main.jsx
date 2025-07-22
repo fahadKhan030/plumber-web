@@ -15,7 +15,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // ✅ using the Layout from separate file
+    element: <Layout />,
     children: [
       { path: "", element: <Home /> },
       { path: "about", element: <About /> },

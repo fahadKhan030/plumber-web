@@ -29,7 +29,7 @@ export const Header = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-screen  z-50 transition-colors duration-300 ${
+      className={`fixed top-0 w-screen px-2 md:px-0  z-50 transition-colors duration-300 ${
         scrollPosition ? "py-2" : " text-white py-4 "
       }`}
     >
@@ -46,7 +46,11 @@ export const Header = () => {
         </div>
 
         {/* Large screen links */}
-        <ul className="hidden lg:flex justify-center lg:text-[18px] px-3 py-2 text-white rounded-md gap-4">
+        <ul
+          className={`hidden lg:flex justify-center lg:text-[18px] px-3 py-2 text-white rounded-md gap-4 ${
+            scrollPosition ? "" : " bg-gray-700/30 backdrop-blur-2xl"
+          }`}
+        >
           <NavLink to="/" className="hover:text-[#F3E063]">
             Home
           </NavLink>
@@ -99,7 +103,7 @@ export const Header = () => {
               />
             )}
           </button>
-          <Button children="Contact" className="px-2 py-1 md:py-3" />
+          <Button children="Contact" className="px-3 py-1 md:py-2" />
         </div>
       </div>
       {/* Mobile menu */}
