@@ -15,7 +15,7 @@ export const Header = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 80) {
+    if (window.scrollY > 0) {
       setScrollPosition(true);
     } else {
       setScrollPosition(false);
@@ -29,21 +29,41 @@ export const Header = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-screen py-4 px-3 z-50 transition-colors duration-300 ${
-        scrollPosition
-          ? " bg-transparent text-black"
-          : "bg-[#1a5cbf] text-white"
+      className={`fixed top-0 w-screen  z-50 transition-colors duration-300 ${
+        scrollPosition ? "py-2" : " text-white py-4 "
       }`}
     >
-      <div className="flex items-center justify-center">
-        <div className="flex items-center justify-between w-full max-w-[1200px]">
-          {/* Logo */}
-          <div>
-            <img src={Logo} alt="Logo" className="h-7" />
-          </div>
+      <div
+        className={`flex items-center mx-auto justify-between px-3   w-full transition-all duration-300 max-w-[1100px] ${
+          scrollPosition
+            ? "max-w-[1100px] mx-auto bg-black/30 backdrop-blur-2xl px-2 py-2 rounded-2xl"
+            : "max-w-[1200px]"
+        }`}
+      >
+        {/* Logo */}
+        <div>
+          <img src={Logo} alt="Logo" className="h-4 md:h-7" />
+        </div>
 
-          {/* Large screen links */}
-          <ul className="hidden lg:flex justify-center lg:text-[18px] px-3 py-2 backdrop-blur-sm bg-white/10 rounded-md gap-4">
+        {/* Large screen links */}
+        <ul className="hidden lg:flex justify-center lg:text-[18px] px-3 py-2 text-white rounded-md gap-4">
+          <NavLink to="/" className="hover:text-[#F3E063]">
+            Home
+          </NavLink>
+          <NavLink to="/about" className="hover:text-[#F3E063]">
+            About
+          </NavLink>
+          <NavLink to="/services" className="hover:text-[#F3E063]">
+            Services
+          </NavLink>
+          <NavLink to="/contact" className="hover:text-[#F3E063]">
+            Contact
+          </NavLink>
+        </ul>
+
+        {/* Mid screen links and buttons */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <ul className="hidden md:flex lg:hidden justify-center md:text-md px-3 py-2 backdrop-blur-sm bg-white/10 rounded-md gap-4">
             <NavLink to="/" className="hover:text-[#F3E063]">
               Home
             </NavLink>
@@ -58,67 +78,49 @@ export const Header = () => {
             </NavLink>
           </ul>
 
-          {/* Mid screen links and buttons */}
-          <div className="flex items-center gap-2 md:gap-4">
-            <ul className="hidden md:flex lg:hidden justify-center md:text-md px-3 py-2 backdrop-blur-sm bg-white/10 rounded-md gap-4">
-              <NavLink to="/" className="hover:text-[#F3E063]">
-                Home
-              </NavLink>
-              <NavLink to="/about" className="hover:text-[#F3E063]">
-                About
-              </NavLink>
-              <NavLink to="/services" className="hover:text-[#F3E063]">
-                Services
-              </NavLink>
-              <NavLink to="/contact" className="hover:text-[#F3E063]">
-                Contact
-              </NavLink>
-            </ul>
-
-            <button className="items-center hidden lg:flex justify-center gap-1">
-              <img src={telephone} alt="Phone" className="h-3" />
-              <span>(333) 8958158</span>
-            </button>
-            <button className=" md:hidden bg-[#222222]/30 backdrop-blur-2xl px-3 py-2 rounded-md">
-              {isOpen ? (
-                <img
-                  src={closeIcon}
-                  alt="Close"
-                  onClick={toggleMenu}
-                  className="h-6"
-                />
-              ) : (
-                <img
-                  src={MobilNavIcon}
-                  alt="Menu"
-                  onClick={toggleMenu}
-                  className="h-6"
-                />
-              )}
-            </button>
-            <Button children="Contact" className="px-2 py-2" />
-          </div>
+          <button className="items-center hidden text-white lg:flex justify-center gap-1">
+            <img src={telephone} alt="Phone" className="h-3" />
+            <span>(333) 8958158</span>
+          </button>
+          <button className=" md:hidden bg-[#222222]/30 backdrop-blur-2xl px-3 py-1 md:py-3 rounded-md">
+            {isOpen ? (
+              <img
+                src={closeIcon}
+                alt="Close"
+                onClick={toggleMenu}
+                className="h-6"
+              />
+            ) : (
+              <img
+                src={MobilNavIcon}
+                alt="Menu"
+                onClick={toggleMenu}
+                className="h-6"
+              />
+            )}
+          </button>
+          <Button children="Contact" className="px-2 py-1 md:py-3" />
         </div>
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="absolute top-16 left-1/2 max-w-[360px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
-            <ul className="flex flex-col items-center gap-4">
-              <NavLink to="/" onClick={toggleMenu}>
-                Home
-              </NavLink>
-              <NavLink to="/about" onClick={toggleMenu}>
-                About
-              </NavLink>
-              <NavLink to="/services" onClick={toggleMenu}>
-                Services
-              </NavLink>
-              <NavLink to="/contact" onClick={toggleMenu}>
-                Contact
-              </NavLink>
-            </ul>
-          </div>
-        )}
       </div>
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="absolute top-16 left-1/2 max-w-[360px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
+          <ul className="flex flex-col items-center gap-4">
+            <NavLink to="/" onClick={toggleMenu}>
+              Home
+            </NavLink>
+            <NavLink to="/about" onClick={toggleMenu}>
+              About
+            </NavLink>
+            <NavLink to="/services" onClick={toggleMenu}>
+              Services
+            </NavLink>
+            <NavLink to="/contact" onClick={toggleMenu}>
+              Contact
+            </NavLink>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

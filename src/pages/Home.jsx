@@ -1,5 +1,5 @@
 // Home.jsx
-import React from "react";
+import React, { useState } from "react";
 import HeroImg from "../assets/HeroImg.jpg";
 import Button from "../component/Button";
 import { NavLink } from "react-router-dom";
@@ -19,6 +19,7 @@ import plumbing from "../assets/plumbing.png";
 import tub from "../assets/tub.png";
 import wasterwater from "../assets/waste-water.png";
 import driver from "../assets/driver.png";
+import right from "../assets/arrowright.png";
 
 import "../App.css"; // Assuming you have a global CSS file for styles
 
@@ -74,6 +75,12 @@ const ChecklistItem = ({ title }) => (
 );
 
 const Home = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleAnswer = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   const aboutPoints = [
     "Experienced and certified plumbers",
     "High-quality materials and equipment",
@@ -124,10 +131,33 @@ const Home = () => {
     },
   ];
 
+  const Faq = [
+    {
+      id: 0,
+      Q: "Are your plumbers licensed and insured?",
+      Ans: "Yes, all our plumbers are fully licensed, insured, and have undergone extensive training to ensure they provide the highest quality service.",
+    },
+    {
+      id: 1,
+      Q: "Do you offer free estimates?",
+      Ans: "Yes, we provide free estimates for all our services. Contact us to schedule a consultation, and we’ll provide you with a detailed quote at no obligation.",
+    },
+    {
+      id: 2,
+      Q: "What payment methods do you accept?",
+      Ans: "We accept various payment methods, including cash, credit/debit cards, and checks. If you have specific payment preferences, please let us know.",
+    },
+    {
+      id: 3,
+      Q: "Do you offer financing options?",
+      Ans: "Yes, we offer flexible financing options to help you manage the cost of larger projects. Contact us to learn more about our financing plans.",
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center mt-10 md:mt-16 text-white text-center">
       {/* Hero Section */}
-      <div className="w-full bg-[#1a5cbf] py-16 px-4">
+      <div className="w-full absolute top-0 bg-[#1a5cbf] py-30 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto gap-3">
           <div className="md:text-start flex flex-col items-center md:items-start gap-4 md:gap-7 flex-1">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-[600px]">
@@ -164,7 +194,7 @@ const Home = () => {
       </div>
 
       {/* Get Started Section */}
-      <div className="w-full bg-[#E6EEFA] px-4 py-20">
+      <div className="w-full bg-[#E6EEFA] px-4  mt-[940px] md:mt-[620px] lg:mt-[670px] py-20">
         <div className="flex flex-col md:flex-row justify-between items-center gap-14 max-w-[1200px] w-full mx-auto">
           <GetStartedItem
             icon={phone}
@@ -242,7 +272,7 @@ const Home = () => {
               key={service.index}
               className="flex flex-col md:flex-row  gap-6 max-w-[1200px] mx-auto mt-10"
             >
-              <div className="flex flex-col gap-3 md:gap-7 hover:scale-95 transform-all duration-300 hover:cursor-pointer text-start border-[0.1px] shadow-xl border-white bg-[#1852ab] px-5 py-7 rounded-xl ">
+              <div className="flex flex-col gap-3 md:gap-7 hover:scale-95 transform-all duration-300 hover:cursor-pointer text-start border-[0.1px] shadow-xl border-gray-400 bg-[#1852ab] px-5 py-7 rounded-xl ">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -265,8 +295,64 @@ const Home = () => {
           </NavLink>
         </div>
       </div>
+
       {/* <Faq /> */}
+      <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20">
+        <div className="flex flex-col md:flex-row items-center md:items-start  gap-3  max-w-[1200px] w-full mx-auto">
+          <div className="flex md:w-1/2 flex-col mt-4 gap-2 md:gap-2 lg:gap-4">
+            <h2 className="text-3xl text-start max-w-[400px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
+              Your questions, answered
+            </h2>
+            <p className="text-gray-500 max-w-[400px] w-full text-start mt-3">
+              Answers to the most common questions our customers have. If you
+              don’t find the information you’re looking for, feel free to
+              contact us.
+            </p>
+            <NavLink to="/Contact" className="flex">
+              <Button className="px-4  py-3 mt-6 shadow-2xl ">
+                Contact Us
+              </Button>
+            </NavLink>
+          </div>
+
+          <div className="text-black md:w-1/2 text-start">
+            {Faq.map((FaqItem, index) => (
+              <div
+                key={index}
+                onClick={() => toggleAnswer(index)}
+                className="mt-3 md:mt-7 border border-gray-400 hover:cursor-pointer px-3 py-3 md:px-4 md:py-4 lg:px-6 lg:py-4 rounded-md flex gap-4 flex-col"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-md font-semibold md:text-xl">
+                    {FaqItem.Q}
+                  </span>
+
+                  <img
+                    src={right}
+                    alt=""
+                    className={`h-2 md:h-4 transition-transform duration-300 ${
+                      openIndex === index ? "rotate-90" : "rotate-0"
+                    }`}
+                  />
+                </div>
+
+                {/* Smooth answer toggle section */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    openIndex === index ? "max-h-[500px] mt-1" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-[13px] md:text-[16px] text-gray-600">
+                    {FaqItem.Ans}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* <Testimonials /> */}
+      <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20"></div>
       {/* <Blog /> */}
     </div>
   );

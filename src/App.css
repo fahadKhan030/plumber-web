@@ -2,3 +2,7 @@
   background: #1D65D1 ;
 background: radial-gradient(circle, rgba(29, 101, 209, 1) 53%, rgba(24, 79, 161, 1) 100%);
 }
+
+@theme{
+  --breakpoint-xs:c350px;
+}
