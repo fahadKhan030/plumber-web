@@ -21,6 +21,12 @@ import wasterwater from "../assets/waste-water.png";
 import driver from "../assets/driver.png";
 import right from "../assets/arrowright.png";
 
+import test1 from "../assets/test1.jpg";
+import test2 from "../assets/text2.jpg";
+import test3 from "../assets/text3.jpg";
+import test4 from "../assets/text4.jpg";
+import test5 from "../assets/text5.jpg";
+
 import "../App.css";
 
 const RatingAvatars = () => {
@@ -154,6 +160,57 @@ const Home = () => {
     },
   ];
 
+  const Testimonial = [
+    {
+      id: 1,
+      img: test1,
+      name: "James Miller",
+      Comment:
+        "Great service and friendly staff! Highly recommend this place for anyone looking for professional support.",
+      reviewSite: "Google Maps",
+    },
+    {
+      id: 2,
+      img: test2,
+      name: "David Lee",
+      Comment:
+        "Quick response time and very helpful throughout. Would definitely use their services again.",
+      reviewSite: "Facebook",
+    },
+    {
+      id: 3,
+      img: test3,
+      name: "Daniel Smith",
+      Comment:
+        "The team went above and beyond to assist me. Smooth and professional experience from start to finish.",
+      reviewSite: "Trustpilot",
+    },
+    {
+      id: 4,
+      img: test4,
+      name: "John Williams",
+      Comment:
+        "Amazing experience! Their attention to detail and customer care really stood out.",
+      reviewSite: "Yelp",
+    },
+    {
+      id: 5,
+      img: test5,
+      name: "Usman Tariq",
+      Comment:
+        "I had a fantastic experience. Everything was well-organized and the staff were incredibly polite.",
+      reviewSite: "Instagram",
+    },
+    {
+      id: 6,
+      img: test5,
+      name: "Usman Tariq",
+      Comment:
+        "I had a fantastic experience. Everything was well-organized and the staff were incredibly polite.",
+      reviewSite: "Instagram",
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center mt-10 md:mt-16 text-white text-center">
       {/* Hero Section */}
@@ -174,7 +231,7 @@ const Home = () => {
                   Explore our service
                 </Button>
               </NavLink>
-              <div className="flex flex-col md:flex-row items-center gap-3 hover:opacity-50 transition duration-200">
+              <div className="flex flex-col md:flex-row hover:cursor-pointer items-center gap-3 hover:opacity-50 transition duration-200">
                 <RatingAvatars />
                 <div className="flex flex-col">
                   <StarRating />
@@ -298,9 +355,9 @@ const Home = () => {
 
       {/* <Faq /> */}
       <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20">
-        <div className="flex flex-col md:flex-row items-center md:items-start  gap-3  max-w-[1200px] w-full mx-auto">
+        <div className="flex flex-col md:flex-row  md:items-start  gap-3  max-w-[1200px] w-full mx-auto">
           <div className="flex md:w-1/2 flex-col mt-4 gap-2 md:gap-2 lg:gap-4">
-            <h2 className="text-3xl text-start max-w-[400px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl text-start max-w-[450px] w-full font-semibold text-black md:text-4xl lg:text-6xl">
               Your questions, answered
             </h2>
             <p className="text-gray-500 max-w-[400px] w-full text-start mt-3">
@@ -353,8 +410,50 @@ const Home = () => {
       </div>
 
       {/* <Testimonials /> */}
-      <div className="w-full px-4  mt-14 md:mt-16 lg:mt-20">
-        <div></div>
+      <div className="w-full px-4 bg-[#e6eefa]   mt-14 md:mt-16 py-8 md:py-16 lg:mt-20">
+        <div className=" flex items-center flex-col justify-center max-w-[1200px] overflow-hidden mx-auto">
+          <div className="flex items-center justify-center flex-col">
+            <h2 className="text-3xl text-start max-w-[550px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
+              What our customers say
+            </h2>
+            <p className="text-gray-500 max-w-[430px]  w-full mt-2 ">
+              Our customers are at the heart of everything we do. We listen to
+              your needs and tailor our services to meet them.
+            </p>
+          </div>
+          {
+            <div className="flex justify-self-start flex-nowrap gap-5 mt-16 shadow w-full overflow-hidden py-3 text-black ">
+              {Testimonial.map((items, index) => (
+                <div
+                  className="flex flex-col gap-3  p-6 flex-[0_0_80%] md:flex-[0_0_45%] lg:flex-[0_0_30%]   rounded-2xl md:gap-6 bg-white"
+                  key={index}
+                >
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>⭐</span>
+                    ))}
+                  </div>
+
+                  <p className="text-start text-gray-500">{items.Comment}</p>
+
+                  <div className="flex gap-3 items-center">
+                    <img
+                      src={items.img}
+                      alt=""
+                      className="h-12 w-12 rounded-full object-cover"
+                    />
+                    <div className="text-start">
+                      <span className="font-semibold">{items.name}</span>
+                      <p className="text-gray-500 font-semibold text-sm">
+                        {items.reviewSite}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          }
+        </div>
       </div>
 
       {/* <Blog /> */}

@@ -67,7 +67,7 @@ export const Header = () => {
 
         {/* Mid screen links and buttons */}
         <div className="flex items-center gap-2 md:gap-4">
-          <ul className="hidden md:flex lg:hidden justify-center md:text-md px-3 py-2 backdrop-blur-sm bg-white/10 rounded-md gap-4">
+          <ul className="hidden md:flex lg:hidden justify-center md:text-md px-3 py-2 text-white rounded-md gap-4">
             <NavLink to="/" className="hover:text-[#F3E063]">
               Home
             </NavLink>
@@ -108,7 +108,7 @@ export const Header = () => {
       </div>
       {/* Mobile menu */}
       {isOpen && (
-        <div className="absolute top-16 left-1/2 max-w-[360px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
+        <div className="absolute top-16 z-50 left-1/2 max-w-[360px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
           <ul className="flex flex-col items-center gap-4">
             <NavLink to="/" onClick={toggleMenu}>
               Home

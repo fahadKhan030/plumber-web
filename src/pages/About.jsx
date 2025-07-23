@@ -12,10 +12,10 @@ const About = () => {
             src={bg}
             alt=""
           />
-          <h1 className="text-3xl z-50 md:text-5xl lg:text-6xl font-semibold">
+          <h1 className="text-3xl z-40 md:text-5xl lg:text-6xl font-semibold">
             About Us
           </h1>
-          <span className="text-center z-50 max-w-[300px] md:max-w-[500px] w-full mt-3 mb-9">
+          <span className="text-center z-40 max-w-[300px] md:max-w-[500px] w-full mt-3 mb-9">
             We offer a comprehensive range of plumbing services designed to
             address all your plumbing needs.
           </span>
