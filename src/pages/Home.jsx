@@ -212,6 +212,7 @@ const Home = () => {
   ];
 
   return (
+    // Home Page
     <div className="flex flex-col items-center justify-center mt-10 md:mt-16 text-white text-center">
       {/* Hero Section */}
       <div className="w-full absolute top-0 gradient-bg py-30 px-4">
@@ -409,7 +410,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <Testimonials /> */}
+      {/* <Testimonials...... carousel is not complete in this section yet  work in progress/> */}
       <div className="w-full px-4 bg-[#e6eefa]   mt-14 md:mt-16 py-8 md:py-16 lg:mt-20">
         <div className=" flex items-center flex-col justify-center max-w-[1200px] overflow-hidden mx-auto">
           <div className="flex items-center justify-center flex-col">
@@ -421,6 +422,7 @@ const Home = () => {
               your needs and tailor our services to meet them.
             </p>
           </div>
+
           {
             <div className="flex justify-self-start flex-nowrap gap-5 mt-16 shadow w-full overflow-hidden py-3 text-black ">
               {Testimonial.map((items, index) => (
