@@ -27,6 +27,10 @@ import test3 from "../assets/text3.jpg";
 import test4 from "../assets/text4.jpg";
 import test5 from "../assets/text5.jpg";
 
+import blogimg1 from "../assets/blogimg1.jpg";
+import blogimg2 from "../assets/blogimg2.jpg";
+import blogimg3 from "../assets/blogimg3.jpg";
+
 import "../App.css";
 
 const RatingAvatars = () => {
@@ -208,6 +212,24 @@ const Home = () => {
       Comment:
         "I had a fantastic experience. Everything was well-organized and the staff were incredibly polite.",
       reviewSite: "Instagram",
+    },
+  ];
+
+  const blogs = [
+    {
+      id: 0,
+      img: blogimg1,
+      title: "How to Identify and Fix Common Plumbing Leaks",
+    },
+    {
+      id: 1,
+      img: blogimg2,
+      title: "The Benefits of Installing a Tankless Water Heater",
+    },
+    {
+      id: 3,
+      img: blogimg3,
+      title: "Eco-Friendly Solutions to Reduce Your Water Bill",
     },
   ];
 
@@ -412,7 +434,7 @@ const Home = () => {
 
       {/* <Testimonials...... carousel is not complete in this section yet  work in progress/> */}
       <div className="w-full px-4 bg-[#e6eefa]   mt-14 md:mt-16 py-8 md:py-16 lg:mt-20">
-        <div className=" flex items-center flex-col justify-center max-w-[1200px] overflow-hidden mx-auto">
+        <div className=" flex items-center flex-col py-10 justify-center max-w-[1200px] overflow-hidden mx-auto">
           <div className="flex items-center justify-center flex-col">
             <h2 className="text-3xl text-start max-w-[550px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
               What our customers say
@@ -427,7 +449,7 @@ const Home = () => {
             <div className="flex justify-self-start flex-nowrap gap-5 mt-16 shadow w-full overflow-hidden py-3 text-black ">
               {Testimonial.map((items, index) => (
                 <div
-                  className="flex flex-col gap-3  p-6 flex-[0_0_80%] md:flex-[0_0_45%] lg:flex-[0_0_30%]   rounded-2xl md:gap-6 bg-white"
+                  className="flex flex-col justify-between gap-3  p-6 flex-[0_0_80%] md:flex-[0_0_45%] lg:flex-[0_0_30%]   rounded-2xl md:gap-6 bg-white"
                   key={index}
                 >
                   <div className="flex">
@@ -442,7 +464,7 @@ const Home = () => {
                     <img
                       src={items.img}
                       alt=""
-                      className="h-12 w-12 rounded-full object-cover"
+                      className="h-12 w-12 rounded-full border border-[] object-cover"
                     />
                     <div className="text-start">
                       <span className="font-semibold">{items.name}</span>
@@ -459,7 +481,41 @@ const Home = () => {
       </div>
 
       {/* <Blog /> */}
-      <div></div>
+      <div className="w-full px-4  mt-14 md:mt-16 py-8 md:py-16 lg:mt-20">
+        <div className="flex flex-col items-center max-w-[1200px] justify-between mx-auto">
+          <div className="flex items-center justify-center flex-col">
+            <h2 className="text-3xl text-start max-w-[380px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
+              Latest blog posts
+            </h2>
+            <p className="text-gray-500 max-w-[450px]  w-full mt-2 ">
+              Our blog is designed to help you understand your plumbing system
+              better and provide valuable insights to keep it running smoothly.
+            </p>
+          </div>
+
+          <div className="flex w-full gap-7 mt-9 justify-around">
+            {blogs.map((blog, index) => (
+              <NavLink to="" className="flex gap-3 flex-col text-black">
+                <div className="h-90 rounded-xl overflow-hidden ">
+                  <img
+                    src={blog.img}
+                    alt=""
+                    className="object-cover h-full w-full"
+                  />
+                </div>
+                <h6 className="text-xl text-start font-semibold ">
+                  {blog.title}
+                </h6>
+                <button className="text-start">
+                  <a href="" className="text-[#1850A4]">
+                    Read more
+                  </a>
+                </button>
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
