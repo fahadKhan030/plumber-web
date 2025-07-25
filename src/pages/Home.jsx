@@ -439,7 +439,7 @@ const Home = () => {
             <h2 className="text-3xl text-start max-w-[550px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
               What our customers say
             </h2>
-            <p className="text-gray-500 max-w-[430px]  w-full mt-2 ">
+            <p className="text-gray-500 text-start md:text-center max-w-[430px]  w-full mt-2 ">
               Our customers are at the heart of everything we do. We listen to
               your needs and tailor our services to meet them.
             </p>
@@ -487,15 +487,20 @@ const Home = () => {
             <h2 className="text-3xl text-start max-w-[380px] w-full font-semibold text-black md:text-4xl lg:text-5xl">
               Latest blog posts
             </h2>
-            <p className="text-gray-500 max-w-[450px]  w-full mt-2 ">
+            <p className="text-gray-500 text-start md:text-center max-w-[450px]  w-full mt-2 ">
               Our blog is designed to help you understand your plumbing system
               better and provide valuable insights to keep it running smoothly.
             </p>
           </div>
 
-          <div className="flex w-full gap-7 mt-9 justify-around">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-7 mt-9 justify-around">
             {blogs.map((blog, index) => (
-              <NavLink to="" className="flex gap-3 flex-col text-black">
+              <NavLink
+                to=""
+                className={`flex gap-3 flex-col text-black ${
+                  index === blogs.length - 1 ? "md:hidden lg:flex" : ""
+                }`}
+              >
                 <div className="h-90 rounded-xl overflow-hidden ">
                   <img
                     src={blog.img}

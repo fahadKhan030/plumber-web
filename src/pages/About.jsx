@@ -1,8 +1,24 @@
 import React from "react";
 import bg from "../assets/aboutBG.jpg";
+import cheaklist from "../assets/cheakicon.png";
+// import { NavLink } from "react-router-dom";
 import "../App.css";
 
 const About = () => {
+  const aboutPoints = [
+    {
+      data: "Transparency",
+    },
+    {
+      data: "Excellence",
+    },
+    {
+      data: "Sustainability",
+    },
+    {
+      data: "Customer focus",
+    },
+  ];
   return (
     <div className="text-black w-full">
       <div className="relative text-white bg-black h-[35vh] lg:h-[45vh] pt-20 lg:pt-36 w-full">
@@ -22,7 +38,36 @@ const About = () => {
         </div>
       </div>
 
-      <div></div>
+      <div className="w-full px-4 mt-20">
+        <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto gap-10 text-black">
+          <div className="flex-1 w-full relative group">
+            <img
+              src={bg}
+              alt=""
+              className="rounded-lg shadow-lg object-cover h-[400px] w-full md:h-[450px] lg:h-[500px] group-hover:opacity-50 transition-opacity duration-300"
+            />
+          </div>
+
+          <div className="flex-1 text-start ">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">
+              Plumbing began with a simple mission
+            </h2>
+            <p className="text-gray-600  max-w-[600px] mx-auto mb-6">
+              Over the years, we have grown from a small local business to a
+              leading plumbing service provider. We aim to provide solutions
+              that are not only effective but also sustainable.
+            </p>
+            <div className="grid grdi-col-1  md:grid-cols-2 gap-3 ">
+              {aboutPoints.map((items) => (
+                <div className="flex items-center  gap-3">
+                  <img src={cheaklist} alt="" className="h-6" />
+                  <span className="text-xl font-semibold">{items.data}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
