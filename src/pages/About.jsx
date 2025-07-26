@@ -5,7 +5,15 @@ import safety from "../assets/safety.jpg";
 import sustanibility from "../assets/sustanibility.jpg";
 import workshop from "../assets/workshops.jpg";
 
-// import { NavLink } from "react-router-dom";
+import ryan from "../assets/Ryan.avif";
+import michael from "../assets/michael.avif";
+import daniel from "../assets/daniel.avif";
+import david from "../assets/david.avif";
+import john from "../assets/john.avif";
+import kevin from "../assets/kevin.avif";
+import robert from "../assets/robert.avif";
+import mark from "../assets/mark.avif";
+
 import "../App.css";
 
 const About = () => {
@@ -50,9 +58,44 @@ const About = () => {
 
   const team = [
     {
-      img: "",
-      post: "",
-      name: "",
+      img: ryan,
+      post: "Owner & Master Plumber",
+      name: "Ryan Johnson",
+    },
+    {
+      img: michael,
+      post: "Lead Technician",
+      name: "Michael Brown",
+    },
+    {
+      img: daniel,
+      post: "Senior Plumber",
+      name: "Daniel Smith",
+    },
+    {
+      img: david,
+      post: "Pipe Installation Specialist",
+      name: "David Lee",
+    },
+    {
+      img: john,
+      post: "Drainage Expert",
+      name: "John Carter",
+    },
+    {
+      img: kevin,
+      post: "Water Heater Technician",
+      name: "Kevin Harris",
+    },
+    {
+      img: robert,
+      post: "Emergency Service Plumber",
+      name: "Robert Wilson",
+    },
+    {
+      img: mark,
+      post: "Customer Service Manager",
+      name: "Mark Thompson",
     },
   ];
 
@@ -138,6 +181,34 @@ const About = () => {
                   <h5 className="text-xl font-semibold">{items.title}</h5>
                   <p className="text-black">{items.aboutTranning}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full text-black mt-20 px-4">
+        <div className="max-w-[1200px]  w-full mx-auto">
+          <div className="flex items-center flex-col justify-center">
+            <h2 className="text-4xl font-semibold">Meet the team </h2>
+            <p className="text-gray-500 max-w-[500px] text-center mt-2">
+              Our success is built on the expertise and dedication of our team.
+              Each member of Plumbing is a certified professional.
+            </p>
+          </div>
+
+          <div className="mt-10 mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {team.map((items) => (
+              <div>
+                <div className="h-60 w-50 overflow-hidden rounded-xl">
+                  <img
+                    src={items.img}
+                    alt=""
+                    className="h-full w-full hover:scale-105 transform-all duration-150 object-cover   "
+                  />
+                </div>
+                <span className="text-gray-400">{items.post}</span>
+                <p className="text-xl font-semibold">{items.name}</p>
               </div>
             ))}
           </div>
