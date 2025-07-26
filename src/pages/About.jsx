@@ -1,6 +1,10 @@
 import React from "react";
 import bg from "../assets/aboutBG.jpg";
 import cheaklist from "../assets/cheakicon.png";
+import safety from "../assets/safety.jpg";
+import sustanibility from "../assets/sustanibility.jpg";
+import workshop from "../assets/workshops.jpg";
+
 // import { NavLink } from "react-router-dom";
 import "../App.css";
 
@@ -19,6 +23,39 @@ const About = () => {
       data: "Customer focus",
     },
   ];
+
+  const training = [
+    {
+      id: 1,
+      img: safety,
+      title: "Safety training",
+      aboutTranning:
+        "Our new employees receive detailed training on safety protocols to ensure they can perform their duties safely.",
+    },
+    {
+      id: 2,
+      img: sustanibility,
+      title: "Regular workshops",
+      aboutTranning:
+        "We host regular workshops and seminars. These sessions cover the latest advancements in plumbing technology.",
+    },
+    {
+      id: 3,
+      img: workshop,
+      title: "Sustainability",
+      aboutTranning:
+        "We provide training on sustainable practices, including water conservation and efficient systems.",
+    },
+  ];
+
+  const team = [
+    {
+      img: "",
+      post: "",
+      name: "",
+    },
+  ];
+
   return (
     <div className="text-black w-full">
       <div className="relative text-white bg-black h-[35vh] lg:h-[45vh] pt-20 lg:pt-36 w-full">
@@ -44,7 +81,7 @@ const About = () => {
             <img
               src={bg}
               alt=""
-              className="rounded-lg shadow-lg object-cover h-[400px] w-full md:h-[450px] lg:h-[500px] group-hover:opacity-50 transition-opacity duration-300"
+              className="rounded-lg shadow-lg object-cover h-[400px] w-full md:h-[450px] lg:h-[500px]"
             />
           </div>
 
@@ -65,6 +102,44 @@ const About = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full bg-[#E7EEFB] px-4 mt-20">
+        <div className="flex flex-col items-center justify-between py-20 max-w-[1200px] mx-auto gap-10 text-black">
+          <div className="flex gap-3 md:gap-6 lg:gap-10 flex-col md:flex-row items-center">
+            <h2 className="text-3xl max-w-[500px] w-full md:text-4xl lg:text-5xl font-semibold mb-4">
+              We invest in continuous training
+            </h2>
+            <p className="max-w-[500px] w-full">
+              We are dedicated to maintaining the highest standards of quality
+              in everything we do. From the materials we use to the techniques
+              we employ, excellence is our benchmark.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {training.map((items, index) => (
+              <div
+                key={index}
+                className={`flex flex-col ${
+                  index === training.length - 1 ? "md:hidden  lg:flex" : ""
+                }`}
+              >
+                <div className="rounded-t-2xl overflow-hidden h-60">
+                  <img
+                    src={items.img}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex justify-around gap-2 min-h-40 flex-col bg-white py-4 rounded-b-xl px-3">
+                  <h5 className="text-xl font-semibold">{items.title}</h5>
+                  <p className="text-black">{items.aboutTranning}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
