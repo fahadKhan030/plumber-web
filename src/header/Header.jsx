@@ -60,8 +60,8 @@ export const Header = () => {
           <NavLink to="/services" className="hover:text-[#F3E063]">
             Services
           </NavLink>
-          <NavLink to="/contact" className="hover:text-[#F3E063]">
-            Contact
+          <NavLink to="/blog" className="hover:text-[#F3E063]">
+            Blog
           </NavLink>
         </ul>
 
@@ -103,7 +103,9 @@ export const Header = () => {
               />
             )}
           </button>
-          <Button children="Contact" className="px-3 py-1 md:py-2" />
+          <NavLink to="/contact">
+            <Button children="Contact" className="px-3 py-1 md:py-2" />
+          </NavLink>
         </div>
       </div>
       {/* Mobile menu */}

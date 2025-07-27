@@ -197,17 +197,19 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-10 mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-10 mb-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {team.map((items) => (
               <div>
-                <div className="h-60 w-50 overflow-hidden rounded-xl">
+                <div className="h-60 md:w-50 w-40  overflow-hidden rounded-xl">
                   <img
                     src={items.img}
                     alt=""
                     className="h-full w-full hover:scale-105 transform-all duration-150 object-cover   "
                   />
                 </div>
-                <span className="text-gray-400">{items.post}</span>
+                <span className="text-gray-400 text-sm md:text-md">
+                  {items.post}
+                </span>
                 <p className="text-xl font-semibold">{items.name}</p>
               </div>
             ))}
