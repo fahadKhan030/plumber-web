@@ -197,10 +197,10 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-10 mb-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-10 mb-10 grid grid-cols-2 justify-items-center items-center md:grid-cols-2 lg:grid-cols-4 gap-4">
             {team.map((items) => (
               <div>
-                <div className="h-60 md:w-50 w-40  overflow-hidden rounded-xl">
+                <div className="h-60 md:w-50 w-40  overflow-hidden rounded-xl hover:cursor-pointer">
                   <img
                     src={items.img}
                     alt=""

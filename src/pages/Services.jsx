@@ -1,10 +1,10 @@
 import React from "react";
-import drop from "../assets/drop.png";
-import fan from "../assets/fan.png";
-import plumbing from "../assets/plumbing.png";
-import tub from "../assets/tub.png";
-import wasterwater from "../assets/waste-water.png";
-import driver from "../assets/driver.png";
+import drop from "../assets/dropb.png";
+import fan from "../assets/fanb.png";
+import plumbing from "../assets/plumbingb.png";
+import tub from "../assets/tubb.png";
+import wasterwater from "../assets/drainb.png";
+import driver from "../assets/driverb.png";
 import right from "../assets/arrowright.png";
 import "../App.css";
 import Button from "../component/Button";

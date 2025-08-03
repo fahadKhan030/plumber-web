@@ -20,6 +20,13 @@ import tub from "../assets/tub.png";
 import wasterwater from "../assets/waste-water.png";
 import driver from "../assets/driver.png";
 import right from "../assets/arrowright.png";
+import GetStartedItem from "./GetStartedItem";
+
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import test1 from "../assets/test1.jpg";
 import test2 from "../assets/text2.jpg";
@@ -57,24 +64,6 @@ const StarRating = () => (
       </span>
     ))}
   </span>
-);
-
-const GetStartedItem = ({ icon, title, description }) => (
-  <div className="flex flex-col items-center justify-center group">
-    <div className="w-24 h-10 flex items-center justify-center bg-[#F3E063] rounded-full">
-      <img
-        src={icon}
-        alt=""
-        className="h-14 mb-5 group-hover:mb-8 transition-all duration-300"
-      />
-    </div>
-    <div className="text-black mt-6 text-center">
-      <span className="font-semibold text-xl">{title}</span>
-      <p className="max-w-[300px] opacity-50 font-semibold mt-1">
-        {description}
-      </p>
-    </div>
-  </div>
 );
 
 const ChecklistItem = ({ title }) => (
@@ -233,6 +222,46 @@ const Home = () => {
     },
   ];
 
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero", // the section to watch
+        start: "top 80%", // when the top of `.hero` hits 80% of viewport
+        toggleActions: "play none none reverse", // optional
+      },
+    });
+
+    // Animate heading items
+    tl.to(".text, .headingItem", {
+      duration: 0.9,
+      y: 0,
+      opacity: 1,
+      stagger: 0.09,
+      ease: "power3.out",
+    });
+
+    // Animate CTA items
+    tl.to(".ctaItems", {
+      duration: 0.5,
+      y: 0,
+      opacity: 1,
+      stagger: 0.06,
+      ease: "power3.out",
+    });
+
+    // Animate image separately with its own ScrollTrigger
+    gsap.to(".headingImg", {
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top 80%",
+      },
+      opacity: 1,
+      duration: 0.6,
+      x: 0,
+      ease: "power3.out",
+    });
+  });
+
   return (
     // Home Page
     <div className="flex flex-col items-center justify-center mt-10 md:mt-16 text-white text-center">
@@ -240,30 +269,51 @@ const Home = () => {
       <div className="w-full absolute top-0 gradient-bg py-30 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto gap-3">
           <div className="md:text-start flex flex-col items-center md:items-start gap-4 md:gap-7 flex-1">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-[600px]">
-              Your trusted plumbing solutions in New York
+            <h1 className="headingItem opacity-0  transform translate-y-10 flex  justify-center  md:justify-start gap-2 md:gap-4 flex-wrap flex-row md:text-start text-center text-4xl md:text-5xl lg:text-6xl font-bold max-w-[600px]">
+              <span className="text opacity-0 inline-block transform translate-y-10">
+                Your
+              </span>
+              <span className="text opacity-0 inline-block transform translate-y-6">
+                trusted
+              </span>
+              <span className="text opacity-0 inline-block transform translate-y-6">
+                plumbing
+              </span>
+              <span className="text opacity-0 inline-block transform translate-y-6">
+                solutions
+              </span>
+              <span className="text opacity-0 inline-block transform translate-y-6">
+                in
+              </span>
+              <span className="text opacity-0 inline-block transform translate-y-6">
+                New York
+              </span>
             </h1>
-            <p className="max-w-[510px] text-md font-semibold text-gray-400">
+
+            <p className="opacity-0 inline-block transform translate-y-10 headingItem max-w-[510px] text-md font-semibold text-gray-400">
               With over 20 years of experience, we have built a reputation for
               delivering top-notch plumbing solutions tailored to meet your
               needs.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
-              <NavLink to="/services">
+            <div className="opacity-0  transform translate-y-10 headingItem flex flex-col md:flex-row gap-4 md:gap-10">
+              <NavLink
+                to="/services"
+                className="ctaItems  opacity-0  transform translate-y-10"
+              >
                 <Button className="px-5 font-semibold py-3.5">
                   Explore our service
                 </Button>
               </NavLink>
-              <div className="flex flex-col md:flex-row hover:cursor-pointer items-center gap-3 hover:opacity-50 transition duration-200">
-                <RatingAvatars />
+              <div className="ctaItems  opacity-0  transform translate-y-10 flex ctaItems flex-col md:flex-row hover:cursor-pointer items-center gap-3 ">
+                <RatingAvatars className="" />
                 <div className="flex flex-col">
-                  <StarRating />
-                  <p className="font-semibold">From 2000+ ratings</p>
+                  <StarRating className="" />
+                  <p className="">From 2000+ ratings</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-16 md:mt-0 flex-1 max-w-[450px]">
+          <div className="headingImg opacity-0 transform translate-x-16 mt-16 md:mt-0 flex-1 max-w-[450px]">
             <img
               src={HeroImg}
               alt=""
@@ -274,24 +324,27 @@ const Home = () => {
       </div>
 
       {/* Get Started Section */}
-      <div className="w-full bg-[#E6EEFA] px-4  mt-[940px] md:mt-[620px] lg:mt-[670px] py-20">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-14 max-w-[1200px] w-full mx-auto">
+      <div className="w-full bg-[#E6EEFA] px-4 mt-[940px] md:mt-[620px] lg:mt-[670px] py-20">
+        <div className="start-wrapper flex flex-col md:flex-row justify-between items-center gap-14 max-w-[1200px] w-full mx-auto">
           <GetStartedItem
             icon={phone}
+            className="start opacity-0 transform translate-x-6"
             title="+92 (333) 8958158"
             description="We remain available 24/7 for any plumbing emergency."
           />
           <img src={arrow} alt="" className="lg:flex hidden" />
           <GetStartedItem
+            className="start opacity-0 transform translate-x-6"
             icon={person}
             title="Expert evaluation"
             description="Our experts will evaluate the situation and look for solutions."
           />
           <img src={arrow} alt="" className="lg:flex hidden" />
           <GetStartedItem
+            className="start opacity-0 transform translate-x-6"
             icon={delivery}
             title="We arrive in 30 minutes"
-            description="Our team will arrive with all the necessary equipments."
+            description="Our team will arrive with all the necessary equipment."
           />
         </div>
       </div>
@@ -307,7 +360,7 @@ const Home = () => {
             />
             <NavLink
               to="/about"
-              className="absolute justify-center gap-4 text-center  opacity-0  bottom-4 font-semibold text-md  md:text-2xl group-hover:opacity-60 text-black  left-1/2 transform -translate-x-1/2  px-4 py-2 rounded-md flex items-center  transition-colors duration-300"
+              className="absolute justify-center gap-4 text-center   bottom-4 font-semibold text-md  md:text-2xl group-hover:opacity-60 text-black  left-1/2 transform -translate-x-1/2  px-4 py-2 rounded-md flex items-center  transition-colors duration-300"
             >
               Learn more <img src={rightarrow} alt="" className="inline h-10" />
             </NavLink>
