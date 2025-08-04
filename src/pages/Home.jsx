@@ -328,20 +328,20 @@ const Home = () => {
         <div className="start-wrapper flex flex-col md:flex-row justify-between items-center gap-14 max-w-[1200px] w-full mx-auto">
           <GetStartedItem
             icon={phone}
-            className="start opacity-0 transform translate-x-6"
+            className=""
             title="+92 (333) 8958158"
             description="We remain available 24/7 for any plumbing emergency."
           />
           <img src={arrow} alt="" className="lg:flex hidden" />
           <GetStartedItem
-            className="start opacity-0 transform translate-x-6"
+            className=""
             icon={person}
             title="Expert evaluation"
             description="Our experts will evaluate the situation and look for solutions."
           />
           <img src={arrow} alt="" className="lg:flex hidden" />
           <GetStartedItem
-            className="start opacity-0 transform translate-x-6"
+            className=""
             icon={delivery}
             title="We arrive in 30 minutes"
             description="Our team will arrive with all the necessary equipment."

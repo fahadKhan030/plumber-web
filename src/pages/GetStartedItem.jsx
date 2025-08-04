@@ -22,7 +22,7 @@ const GetStartedItem = ({ icon, title, description }) => {
   }, []);
 
   return (
-    <div className="start opacity-0 transform translate-y-6 start-wraper flex flex-col items-center justify-center group">
+    <div className="start  transform translate-y-6 start-wraper flex flex-col items-center justify-center group">
       <div className=" w-24 h-10 flex items-center justify-center bg-[#F3E063] rounded-full">
         <img
           src={icon}
