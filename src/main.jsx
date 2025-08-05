@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Layout from "./Layout";
+import Blogpage from "./pages/Blogpage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -20,9 +21,8 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "about", element: <About /> },
       { path: "blog", element: <Blog /> },
+      { path: "blog/:id", element: <Blogpage /> }, // ✅ FIXED HERE
       { path: "services", element: <Services /> },
-      { path: "services", element: <Services /> },
-      { path: "Blog", element: <Blog /> },
       { path: "contact", element: <Contact /> },
     ],
   },
