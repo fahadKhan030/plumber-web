@@ -121,8 +121,8 @@ export const Header = () => {
             <NavLink to="/services" onClick={toggleMenu}>
               Services
             </NavLink>
-            <NavLink to="/contact" onClick={toggleMenu}>
-              Contact
+            <NavLink to="/blog" className="hover:text-[#F3E063]">
+              Blog
             </NavLink>
           </ul>
         </div>

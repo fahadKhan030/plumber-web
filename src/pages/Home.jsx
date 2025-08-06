@@ -324,7 +324,7 @@ const Home = () => {
       </div>
 
       {/* Get Started Section */}
-      <div className="w-full bg-[#E6EEFA] px-4 mt-[940px] md:mt-[620px] lg:mt-[670px] py-20">
+      <div className="w-full bg-[#E6EEFA] px-4 mt-[999px] md:mt-[620px] lg:mt-[670px] py-20">
         <div className="start-wrapper flex flex-col md:flex-row justify-between items-center gap-14 max-w-[1200px] w-full mx-auto">
           <GetStartedItem
             icon={phone}
