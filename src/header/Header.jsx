@@ -29,14 +29,14 @@ export const Header = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-screen px-2 md:px-0  z-50 transition-colors duration-300 ${
+      className={`fixed top-0 w-screen px-2 md:px-0  mx-auto z-50 transition-colors duration-300 ${
         scrollPosition ? "py-2" : " text-white py-4 "
       }`}
     >
       <div
-        className={`flex items-center mx-auto justify-between px-3   w-full transition-all duration-300 max-w-[1100px] ${
+        className={`flex items-center mx-auto justify-between px-3   w-full transition-all duration-300  ${
           scrollPosition
-            ? "max-w-[1100px] mx-auto bg-black/30 backdrop-blur-2xl px-2 py-2 rounded-2xl"
+            ? "max-w-[900px] mx-auto bg-black/30 backdrop-blur-2xl px-2 py-2 rounded-2xl"
             : "max-w-[1200px]"
         }`}
       >

@@ -86,18 +86,18 @@ const Blogpage = () => {
     <div>
       <div className="relative text-white gradient-bg h-[35vh] lg:h-[45vh] pt-20 lg:pt-36 w-full">
         <div className="flex items-center justify-center flex-col text-center max-w-[1200px] mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl max-w-[250px] md:max-w-[500px] font-bold mt-2 mb-4">
             {blog.heading}
           </h1>
         </div>
       </div>
 
       <div className="max-w-[1200px] mx-auto flex items-center  justify-center flex-col p-6">
-        <div className="w-[350px] mt-[-100px] z-10  p-6">
+        <div className="w-[350px] md:w-[600px]  lg:w-[800px] mt-[-120px] md:mt-[-200px] z-10  p-6">
           <img
             src={blog.img}
             alt={blog.title}
-            className="w-full h-[200px] object-cover rounded-xl mb-6"
+            className="w-full h-[200px] md:h-[400px] object-cover rounded-xl mb-6"
           />
         </div>
         <div>

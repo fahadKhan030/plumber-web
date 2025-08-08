@@ -151,6 +151,7 @@ const About = () => {
 
       <div className="w-full bg-[#E7EEFB] px-4 mt-20">
         <div className="flex flex-col items-center justify-between py-20 max-w-[1200px] mx-auto gap-10 text-black">
+          {/* Section Header */}
           <div className="flex gap-3 md:gap-6 lg:gap-10 flex-col md:flex-row items-center">
             <h2 className="text-3xl max-w-[500px] w-full md:text-4xl lg:text-5xl font-semibold mb-4">
               We invest in continuous training
@@ -162,21 +163,27 @@ const About = () => {
             </p>
           </div>
 
+          {/* Training Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {training.map((items, index) => (
               <div
-                key={index}
+                key={items.id}
                 className={`flex flex-col ${
-                  index === training.length - 1 ? "md:hidden  lg:flex" : ""
+                  index === training.length - 1 ? "md:hidden lg:flex" : ""
                 }`}
               >
-                <div className="rounded-t-2xl overflow-hidden h-60">
+                {/* Image with placeholder */}
+                <div className="aspect-[4/3] rounded-t-2xl overflow-hidden bg-gray-200">
                   <img
                     src={items.img}
-                    alt=""
-                    className="w-full h-full object-cover"
+                    alt={items.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                    onLoad={(e) => (e.target.style.opacity = 1)}
                   />
                 </div>
+
+                {/* Text */}
                 <div className="flex justify-around gap-2 min-h-40 flex-col bg-white py-4 rounded-b-xl px-3">
                   <h5 className="text-xl font-semibold">{items.title}</h5>
                   <p className="text-black">{items.aboutTranning}</p>
