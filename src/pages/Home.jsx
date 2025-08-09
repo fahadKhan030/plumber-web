@@ -66,13 +66,6 @@ const StarRating = () => (
   </span>
 );
 
-const ChecklistItem = ({ title }) => (
-  <div className="flex items-center gap-3">
-    <img src={cheakIcon} alt="" className="h-6" />
-    <span className="text-lg font-semibold">{title}</span>
-  </div>
-);
-
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -81,9 +74,15 @@ const Home = () => {
   };
 
   const aboutPoints = [
-    "Experienced and certified plumbers",
-    "High-quality materials and equipment",
-    "Customer satisfaction guarantee",
+    {
+      detail: "Experienced and certified plumbers",
+    },
+    {
+      detail: "High-quality materials and equipment",
+    },
+    {
+      detail: "Customer satisfaction guarantee",
+    },
   ];
 
   const serviceCard = [
@@ -223,11 +222,17 @@ const Home = () => {
   ];
 
   useGSAP(() => {
+    // Ensure everything is hidden at start
+    gsap.set(".text, .headingItem, .text-steps, .ctaItems, .headingImg", {
+      y: 50,
+      opacity: 0,
+    });
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".hero", // the section to watch
-        start: "top 80%", // when the top of `.hero` hits 80% of viewport
-        toggleActions: "play none none reverse", // optional
+        trigger: ".hero", // section to watch
+        start: "top 80%",
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -240,16 +245,33 @@ const Home = () => {
       ease: "power3.out",
     });
 
-    // Animate CTA items
-    tl.to(".ctaItems", {
-      duration: 0.5,
-      y: 0,
-      opacity: 1,
-      stagger: 0.06,
-      ease: "power3.out",
-    });
+    // Animate text steps
+    tl.to(
+      ".text-steps",
+      {
+        duration: 0.9,
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+      "-=0.5"
+    ); // start slightly before previous finishes
 
-    // Animate image separately with its own ScrollTrigger
+    // Animate CTA items
+    tl.to(
+      ".ctaItems",
+      {
+        duration: 0.5,
+        y: 0,
+        opacity: 1,
+        stagger: 0.06,
+        ease: "power3.out",
+      },
+      "-=0.3"
+    );
+
+    // Separate image animation
     gsap.to(".headingImg", {
       scrollTrigger: {
         trigger: ".hero",
@@ -376,9 +398,12 @@ const Home = () => {
               experience, we have built a reputation for delivering quality
               plumbing solutions tailored to meet your needs.
             </p>
-            <div className="flex flex-col gap-6">
-              {aboutPoints.map((title, index) => (
-                <ChecklistItem title={title} />
+            <div className="flex flex-col gap-5">
+              {aboutPoints.map((items, index) => (
+                <div className="text-steps transform-all translate-y-4 opacity-0 flex items-center gap-2 font-semibold">
+                  <img src={cheakIcon} alt="" className="h-5" />
+                  <p>{items.detail}</p>
+                </div>
               ))}
             </div>
           </div>

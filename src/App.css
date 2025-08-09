@@ -7,5 +7,5 @@ box-shadow: inset 5px 2px 10px #e6eefa, inset -5px 2px 10px #e6eefa;
 }
 
 @theme{
-  --breakpoint-xs:c350px;
+  --breakpoint-xs:350px;
 }

@@ -177,9 +177,7 @@ const About = () => {
                   <img
                     src={items.img}
                     alt={items.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover opacity-0 transition-opacity duration-500"
-                    onLoad={(e) => (e.target.style.opacity = 1)}
+                    className="w-full h-full object-cover transition-opacity duration-500"
                   />
                 </div>
 

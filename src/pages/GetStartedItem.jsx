@@ -6,24 +6,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const GetStartedItem = ({ icon, title, description }) => {
-  useGSAP(() => {
-    const tl = gsap.timeline(".start-wraper", {
-      ScrollTrigger: {
-        start: "top 80%",
-      },
-    });
+  const itemRef = useRef(null);
 
-    tl.to(".start", {
-      y: 0,
-      opacity: 1,
-      stagger: 0.2,
-      duration: 0.6,
-    });
+  useGSAP(() => {
+    gsap.to(
+      ".start", // initial state
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: itemRef.current,
+          start: "top 80%",
+        },
+      }
+    );
   }, []);
 
   return (
-    <div className="start  transform translate-y-6 start-wraper flex flex-col items-center justify-center group">
-      <div className=" w-24 h-10 flex items-center justify-center bg-[#F3E063] rounded-full">
+    <div className="start opacity-0 transform translate-y-6 flex flex-col items-center justify-center group">
+      <div className="w-24 h-10 flex items-center justify-center bg-[#F3E063] rounded-full">
         <img
           src={icon}
           alt=""
