@@ -68,7 +68,7 @@ const Blog = React.memo(() => {
       </div>
 
       {/* Blog Cards */}
-      <div className="w-full flex items-center justify-center my-16">
+      <div className="w-full flex items-center px-3 justify-center my-16">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {blogs.map((blog) => (
             <article
