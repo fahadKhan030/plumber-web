@@ -260,7 +260,7 @@ const Home = () => {
           opacity: 1,
           scale: 1,
         },
-        "-=0.4"
+        "-=0.3"
       )
 
       // Heading words (h2)

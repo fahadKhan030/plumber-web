@@ -73,7 +73,7 @@ const Services = () => {
           {serviceCard.map((service, index) => (
             <div
               key={service.index}
-              className="flex flex-col md:flex-row  gap-6 max-w-[1200px] mx-auto mt-10"
+              className="flex flex-col md:flex-row  gap-7 max-w-[1200px] mx-auto mt-10"
             >
               <div className="flex flex-col gap-3 md:gap-10 md: hover:scale-95 transform-all duration-300 hover:cursor-pointer text-start border-[0.1px] shadow-xl bg-[#e6eefa] border-gray-400  px-5 py-7 rounded-xl ">
                 <img
