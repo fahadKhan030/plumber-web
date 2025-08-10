@@ -222,54 +222,77 @@ const Home = () => {
   ];
 
   useGSAP(() => {
-    // Ensure everything is hidden at start
-    gsap.set(".text, .headingItem, .text-steps, .ctaItems, .headingImg", {
-      y: 50,
-      opacity: 0,
-    });
+    // Initial hidden + slightly scaled state
+    gsap.set(
+      ".text, .headingItem, .text-steps, .ctaItems, .headingImg, .aboutimg, .aboutspan, .aboutp",
+      {
+        // y: 50,
+        opacity: 0,
+        scale: 0.98,
+      }
+    );
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".hero", // section to watch
+        trigger: ".hero",
         start: "top 80%",
         toggleActions: "play none none reverse",
       },
+      defaults: {
+        duration: 1,
+        ease: "power3.out",
+      },
     });
 
-    // Animate heading items
+    // Hero heading
     tl.to(".text, .headingItem", {
-      duration: 0.9,
       y: 0,
       opacity: 1,
-      stagger: 0.09,
-      ease: "power3.out",
-    });
+      scale: 1,
+      stagger: 0.08,
+    })
 
-    // Animate text steps
-    tl.to(
-      ".text-steps",
-      {
-        duration: 0.9,
+      // About image
+      .to(
+        ".aboutimg",
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+        },
+        "-=0.4"
+      )
+
+      // Heading words (h2)
+      .to(".aboutspan", {
         y: 0,
         opacity: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.5"
-    ); // start slightly before previous finishes
+        scale: 1,
+        stagger: 0.08,
+      })
 
-    // Animate CTA items
-    tl.to(
-      ".ctaItems",
-      {
-        duration: 0.5,
-        y: 0,
-        opacity: 1,
-        stagger: 0.06,
-        ease: "power3.out",
-      },
-      "-=0.3"
-    );
+      // Paragraph
+      .to(
+        ".aboutp",
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+        },
+        "+=0.1"
+      )
+
+      // Text steps + CTA items together
+      .to(
+        ".text-steps, .ctaItems",
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          stagger: 0.02,
+        },
+        "-=0.3"
+      );
 
     // Separate image animation
     gsap.to(".headingImg", {
@@ -278,8 +301,9 @@ const Home = () => {
         start: "top 80%",
       },
       opacity: 1,
-      duration: 0.6,
+      duration: 1,
       x: 0,
+      scale: 1,
       ease: "power3.out",
     });
   });
@@ -374,7 +398,7 @@ const Home = () => {
       {/* About Section */}
       <div className="w-full px-4 mt-20">
         <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto gap-10 text-black">
-          <div className="flex-1 w-full relative group">
+          <div className=" opacity-0 aboutimg  transform translate-x-[-60px] flex-1 w-full relative group">
             <img
               src={ABoutImg}
               alt=""
@@ -388,11 +412,28 @@ const Home = () => {
             </NavLink>
           </div>
 
-          <div className="flex-1 text-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">
-              Plumbing solutions tailored to your needs
+          <div className="flex-1   text-start">
+            <h2 className="text-3xl flex flex-wrap gap-3 md:text-4xl lg:text-5xl font-semibold mb-4">
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                Plumbing
+              </span>
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                solutions
+              </span>
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                tailored
+              </span>
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                to
+              </span>
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                your
+              </span>
+              <span className="aboutspan opacity-0 inline-block transform translate-y-10">
+                needs
+              </span>
             </h2>
-            <p className="text-gray-600 max-w-[600px] mx-auto mb-6">
+            <p className="aboutp transform-all  translate-y-10 text-gray-600 max-w-[600px] mx-auto mb-6">
               We are a team of experienced plumbers dedicated to providing
               top-notch services to our clients. With over 20 years of
               experience, we have built a reputation for delivering quality
