@@ -35,8 +35,8 @@ const Contact = () => {
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 mx-auto max-w-[1200px] px-4 py-8">
         <div>
-          <div className="max-w-[550px]">
-            <h2 className="text-3xl md:text-4xl  lg:text-5xl font-semibold mb-4">
+          <div className="max-w-[550px] md:max-w-[350px] lg:max-w-[550px]">
+            <h2 className="text-3xl md:text-3xl  lg:text-5xl font-semibold mb-4">
               Let's get in touch and work together!
             </h2>
             <p className="text-gray-400 ">
@@ -58,10 +58,10 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="bg-[#e7effa] shadow-xl text-center p-5 rounded-xl w-full md:flex-1/2">
+        <div className="bg-[#e7effa] shadow-xl text-center px-3 py-4 md:px-4 md:py-3 lg:px-10 lg:py-8 rounded-xl w-full md:flex-1/2">
           <h4 className="text-xl font-semibold">Send us a message</h4>
 
-          <Form className="flex flex-col gap-4 px-4 mt-5">
+          <Form className="flex flex-col gap-4 mt-5">
             <input
               type="text"
               placeholder="Your name"

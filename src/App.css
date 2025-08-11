@@ -2,8 +2,8 @@
   background: #1D65D1 ;
 background: radial-gradient(circle, rgba(29, 101, 209, 1) 53%, rgba(24, 79, 161, 1) 100%);
 }
-.shadow{
-box-shadow: inset 5px 2px 10px #e6eefa, inset -5px 2px 10px #e6eefa;
+.shadow-top {
+  box-shadow: 0 -5px 10px #e6eefa; /* X offset | Y offset | blur | color */
 }
 
 @theme{

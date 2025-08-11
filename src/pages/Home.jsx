@@ -1,5 +1,5 @@
 // Home.jsx
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import HeroImg from "../assets/HeroImg.jpg";
 import Button from "../component/Button";
 import { NavLink } from "react-router-dom";
@@ -21,6 +21,9 @@ import wasterwater from "../assets/waste-water.png";
 import driver from "../assets/driver.png";
 import right from "../assets/arrowright.png";
 import GetStartedItem from "./GetStartedItem";
+
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -68,6 +71,14 @@ const StarRating = () => (
 
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
+    AutoScroll({
+      speed: 2, // smaller = slower scroll
+      startDelay: 0, // start immediately
+      stopOnInteraction: false, // keep scrolling after dragging
+      stopOnMouseEnter: true, // pause when hovered
+    }),
+  ]);
 
   const toggleAnswer = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -342,15 +353,12 @@ const Home = () => {
               needs.
             </p>
             <div className="opacity-0  transform translate-y-10 headingItem flex flex-col md:flex-row gap-4 md:gap-10">
-              <NavLink
-                to="/services"
-                className="ctaItems  opacity-0  transform translate-y-10"
-              >
+              <NavLink to="/services" className="">
                 <Button className="px-5 font-semibold py-3.5">
                   Explore our service
                 </Button>
               </NavLink>
-              <div className="ctaItems  opacity-0  transform translate-y-10 flex ctaItems flex-col md:flex-row hover:cursor-pointer items-center gap-3 ">
+              <div className=" flex flex-col md:flex-row hover:cursor-pointer items-center gap-3 ">
                 <RatingAvatars className="" />
                 <div className="flex flex-col">
                   <StarRating className="" />
@@ -564,26 +572,30 @@ const Home = () => {
             </p>
           </div>
 
-          {
-            <div className="flex justify-self-start flex-nowrap gap-5 mt-16 shadow w-full overflow-hidden py-3 text-black ">
+          <div
+            ref={emblaRef}
+            className="embla w-full overflow-hidden mt-16 shadow-top py-3 px-4 text-black"
+          >
+            <div className="embla__container flex  mr-3">
               {Testimonial.map((items, index) => (
                 <div
-                  className="flex flex-col justify-between gap-3  p-6 flex-[0_0_80%] md:flex-[0_0_45%] lg:flex-[0_0_30%]   rounded-2xl md:gap-6 bg-white"
                   key={index}
+                  className="embla__slide flex flex-col justify-between mr-3 gap-3 p-6 
+        flex-[0_0_98%] md:flex-[0_0_45%] lg:flex-[0_0_30%] 
+        rounded-2xl md:gap-6 bg-white"
                 >
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <span key={i}>⭐</span>
                     ))}
                   </div>
-
                   <p className="text-start text-gray-500">{items.Comment}</p>
 
                   <div className="flex gap-3 items-center">
                     <img
                       src={items.img}
                       alt=""
-                      className="h-12 w-12 rounded-full border border-[] object-cover"
+                      className="h-12 w-12 rounded-full object-cover"
                     />
                     <div className="text-start">
                       <span className="font-semibold">{items.name}</span>
@@ -595,7 +607,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          }
+          </div>
         </div>
       </div>
 
