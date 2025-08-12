@@ -414,7 +414,7 @@ const Home = () => {
             />
             <NavLink
               to="/about"
-              className="absolute justify-center gap-4 text-center   bottom-4 font-semibold text-md  md:text-2xl group-hover:opacity-60 text-black  left-1/2 transform -translate-x-1/2  px-4 py-2 rounded-md flex items-center  transition-colors duration-300"
+              className="absolute justify-center gap-1 text-center   bottom-4 font-semibold text-md  md:text-2xl group-hover:opacity-60 text-black  left-1/2 transform -translate-x-1/2  px-4 py-2 rounded-md flex items-center  transition-colors duration-300"
             >
               Learn more <img src={rightarrow} alt="" className="inline h-10" />
             </NavLink>
