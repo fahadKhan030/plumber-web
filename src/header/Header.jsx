@@ -110,7 +110,7 @@ export const Header = () => {
       </div>
       {/* Mobile menu */}
       {isOpen && (
-        <div className="absolute top-16 z-50 left-1/2 max-w-[360px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
+        <div className="absolute top-16 z-50 left-1/2 max-w-[300px] transform -translate-x-1/2 w-full bg-white text-black py-8 lg:hidden rounded-4xl shadow-md">
           <ul className="flex flex-col items-center gap-4">
             <NavLink to="/" onClick={toggleMenu}>
               Home
@@ -121,7 +121,11 @@ export const Header = () => {
             <NavLink to="/services" onClick={toggleMenu}>
               Services
             </NavLink>
-            <NavLink to="/blog" className="hover:text-[#F3E063]">
+            <NavLink
+              to="/blog"
+              onClick={toggleMenu}
+              className="hover:text-[#F3E063]"
+            >
               Blog
             </NavLink>
           </ul>
