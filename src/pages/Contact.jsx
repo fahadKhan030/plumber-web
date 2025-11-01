@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Form } from "react-router-dom";
 import Button from "../component/Button";
 import phone from "../assets/telephone.png";
 import addresss from "../assets/pin.png";
 import mail from "../assets/email.png";
+import check from "../assets/check.png";
 
 const Contact = () => {
+  const [notification, setNotification] = useState(false);
+
+  const handleNotify = () => {
+    setNotification(true);
+
+    setTimeout(() => {
+      setNotification(false);
+    }, 2000);
+  };
+
   const address = [
     {
       icon: phone,
@@ -21,6 +32,7 @@ const Contact = () => {
       details: "info@plumbing.com",
     },
   ];
+
   return (
     <div className="text-black w-full">
       <div className="relative text-white gradient-bg h-[35vh] flex items-center justify-center flex-col lg:h-[45vh] pt-20 lg:pt-36 w-full">
@@ -88,11 +100,18 @@ const Contact = () => {
             <input
               type="button"
               value="submit"
-              className="bg-[#f2e062]  rounded-xl py-2"
+              onClick={handleNotify}
+              className="bg-[#f2e062]  rounded-xl py-2 hover:cursor-pointer"
             />
           </Form>
         </div>
       </div>
+      {notification && (
+        <div className="flex items-center justify-center gap-3 fixed top-2 right-[50%] transform translate-x-[50%] px-2 py-1 z-100 bg-white rounded-sm">
+          <img src={check} alt="" className="h-6" />
+          <span>your form submit</span>
+        </div>
+      )}
     </div>
   );
 };
