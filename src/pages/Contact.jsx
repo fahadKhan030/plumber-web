@@ -9,6 +9,18 @@ import check from "../assets/check.png";
 
 const Contact = () => {
   const [notification, setNotification] = useState(false);
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
+  const [service, setService] = useState();
+  const [Message, setMessage] = useState();
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleEmial = (e) => {
+    setEmail(e.target.value);
+  };
 
   const handleNotify = () => {
     setNotification(true);
@@ -16,6 +28,26 @@ const Contact = () => {
     setTimeout(() => {
       setNotification(false);
     }, 2000);
+  };
+
+  const handleService = (e) => {
+    setService(e.target.value);
+  };
+
+  const handleMessage = () => {
+    name("");
+    email("");
+    service("");
+    Message("");
+    alert(
+      "your servie is book for ",
+      name,
+      "and this id emial",
+      email,
+      "and",
+      service,
+      "they want"
+    );
   };
 
   const address = [
@@ -77,16 +109,22 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Your name"
+              onChange={handleName}
+              value={name}
               className="bg-white px-3 py-3 rounded-xl border-0 focus:outline-1 outline-[#1D65D1]"
             />
             <input
               type="Email"
+              onChange={handleEmial}
+              value={email}
               placeholder="Email"
               className="bg-white px-3 py-3 rounded-xl border-0 focus:outline-1  outline-[#1D65D1]"
             />
             <select
               name="service"
               id=""
+              value={service}
+              onChange={handleService}
               className="bg-white px-3 py-3 rounded-xl border-0"
             >
               <option value="Residential Plumbing">Residential Plumbing</option>
@@ -100,7 +138,10 @@ const Contact = () => {
             <input
               type="button"
               value="submit"
-              onClick={handleNotify}
+              onClick={() => {
+                handleNotify();
+                handleMessage();
+              }}
               className="bg-[#f2e062]  rounded-xl py-2 hover:cursor-pointer"
             />
           </Form>
@@ -109,7 +150,7 @@ const Contact = () => {
       {notification && (
         <div className="flex items-center justify-center gap-3 fixed top-2 right-[50%] transform translate-x-[50%] px-2 py-1 z-100 bg-white rounded-sm">
           <img src={check} alt="" className="h-6" />
-          <span>your form submit</span>
+          <span className="text-">your form submit</span>
         </div>
       )}
     </div>
